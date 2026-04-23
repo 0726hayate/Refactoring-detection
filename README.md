@@ -153,7 +153,7 @@ Adjust paths in the script for your setup.
 | `LANGCHAIN_ADVERSARIAL` | `1` | Enable per-detection LLM verifier (T5 + T6) |
 | `LANGCHAIN_ADVERSARIAL_THRESHOLD` | `90` | Verify only detections with conf < this |
 | **`LANGCHAIN_ADVERSARIAL_WITH_FACTS`** | **`1`** | **T6-specific: inject facts into prompt** |
-| `LANGCHAIN_NO_THINK` | (auto via PRECISION_MODE) | Suppress qwen3 reasoning chain |
+| `LANGCHAIN_NO_THINK` | (auto via PRECISION_MODE) | Suppress qwen3.5 reasoning chain |
 | `LANGCHAIN_STAGE5` | (T6: not set) | Alternative LLM gating (single batched call) |
 
 ## Expected output
