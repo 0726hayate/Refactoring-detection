@@ -72,25 +72,36 @@ context.
 pip install -r requirements.txt
 ```
 
-### 3. Java retrieval data (optional but recommended)
+### 3. Java retrieval data + commit pools (download from HuggingFace)
 
-Stage 3 retrieves Java exemplars of each candidate type to anchor the LLM's
-reasoning. The default paths in `concurrent_runner.py` point at:
+Three big files live in the HuggingFace dataset (not on GitHub due to size):
 
-- `/home/25fxvd/summer2025/ELEC825/evaluation_data_v3_ast/contrastive_v5_unixcoder_holdout/projected/unixcoder_java_projected.npy`
-  (~94 MB — 366k Java commits × 64-d UniXcoder InfoNCE-projected embeddings)
-- `/home/25fxvd/summer2025/ELEC825/evaluation_data_v3_ast/embeddings/unixcoder_java_meta.json`
-  (per-record metadata)
-- `/home/25fxvd/summer2025/ELEC825/evaluation_data_v3_ast/java/java_records_all.pkl`
-  (~hundreds-MB Java pool with code+commit context per record)
+  **https://huggingface.co/datasets/0726hayate/t6-refactoring-detection-data**
 
-These are **not bundled** in this directory because of size. To run end-to-end:
+| File | Size | Used for |
+|---|---|---|
+| `commit_level_train_k15_headline.json` | 2.5 GB | training data (FP-Growth rules + per-type-precision history were mined here) |
+| `commit_level_test_k15_headline.json` | 1.1 GB | test pool the slices were drawn from |
+| `commit_level_benchmark_k15_headline.json` | 26 MB | historical evaluation set |
+| `java_retrieval/unixcoder_java_projected.npy` | ~94 MB | 366k × 64-d UniXcoder embeddings for Java exemplars (Stage 3) |
+| `java_retrieval/unixcoder_java_meta.json` | 18 MB | per-record metadata |
+| `java_retrieval/java_records_all.pkl` | 2.6 GB | full Java code + commit context per exemplar |
 
-- **Have your own copy?** Pass `--embeddings-path`, `--meta-path`,
-  `--java-pool-pkl` overrides on the `run_T6.sh` command line.
-- **Don't have them?** Pass `--no-java-examples` to disable Stage 3's
-  Java retrieval entirely. Precision will drop a few pp but the rest of the
-  pipeline (including T6's adversarial verifier) runs unchanged.
+To download:
+
+```bash
+pip install huggingface_hub
+huggingface-cli download 0726hayate/t6-refactoring-detection-data \
+    --repo-type dataset --local-dir .
+```
+
+This creates:
+- `java_retrieval/` (everything Stage 3 needs — defaults in `run_T6.sh` look here)
+- `commit_level_*.json` at top level (the source pools)
+
+If you can't / don't want to download the Java data: pass `--no-java-examples`
+to the runner. Stage 3 is disabled, precision drops a few pp, but nothing
+else breaks.
 
 ### 4. GumTree (optional, for AST facts)
 

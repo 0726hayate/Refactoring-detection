@@ -8,7 +8,7 @@
 #
 # Run:
 #   export HF_TOKEN="hf_xxxxx"           # your write-scope token
-#   export HF_DATASET_REPO="amrarhs/t6-refactoring-detection-data"   # owner/repo
+#   export HF_DATASET_REPO="0726hayate/t6-refactoring-detection-data"   # owner/repo
 #   bash upload_to_huggingface.sh
 #
 # Uploads each file with progress; files appear in the dataset's "Files" tab.
@@ -18,7 +18,7 @@ set -euo pipefail
 if [ -z "${HF_TOKEN:-}" ] || [ -z "${HF_DATASET_REPO:-}" ]; then
     echo "ERROR: set HF_TOKEN and HF_DATASET_REPO env vars first."
     echo "  export HF_TOKEN='hf_xxxxx'"
-    echo "  export HF_DATASET_REPO='amrarhs/t6-refactoring-detection-data'"
+    echo "  export HF_DATASET_REPO='0726hayate/t6-refactoring-detection-data'"
     exit 1
 fi
 

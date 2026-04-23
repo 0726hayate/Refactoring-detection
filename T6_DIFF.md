@@ -165,7 +165,11 @@ Each written JSON line has:
 | 5-case smoke slice | `splits/2p5d_smoke_5.json` | quick verification (`run_T6.sh smoke`) |
 | Canonical 39-type whitelist | `splits/valid_types_39.json` | scorer + `--canon-only` |
 
-### What's NOT bundled (too big — in huggingface)
+### What's NOT bundled (too big — hosted on HuggingFace)
+
+Dataset: **https://huggingface.co/datasets/0726hayate/t6-refactoring-detection-data**
+
+Download all 6 files into `./` from the dataset repo to reproduce locally.
 
 | What | Path on the server | Why you might need it |
 |---|---|---|
