@@ -41,38 +41,13 @@ code/
 
 ## Prerequisites
 
-### 1. Ollama + the qwen3.5:35b model
-
-Install Ollama (https://ollama.com/) and pull the model:
-
-```bash
-ollama pull qwen3.5:35b
-```
-
-Run one or more Ollama instances. T6 expects **port 11444** by default
-(matching `run_T6.sh`):
-
-```bash
-CUDA_VISIBLE_DEVICES=0 \
-OLLAMA_HOST=0.0.0.0:11444 \
-OLLAMA_NUM_PARALLEL=2 \
-OLLAMA_CONTEXT_LENGTH=65536 \
-OLLAMA_KEEP_ALIVE=4h \
-ollama serve
-```
-
-The qwen3.5:35b model loads ~28 GB at full Q4_K_M quantization. Add
-KV-cache for `num_ctx=65536` and 2 parallel workers → ~38–42 GB VRAM total.
-An A100 80GB is plenty; a 48 GB card is the practical minimum for full
-context.
-
-### 2. Python deps
+### 1. Python deps
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Java retrieval data + commit pools (download from HuggingFace)
+### 2. Java retrieval data + commit pools (download from HuggingFace)
 
 Three big files live in the HuggingFace dataset (not on GitHub due to size):
 
@@ -103,7 +78,7 @@ If you can't / don't want to download the Java data: pass `--no-java-examples`
 to the runner. Stage 3 is disabled, precision drops a few pp, but nothing
 else breaks.
 
-### 4. GumTree (optional, for AST facts)
+### 3. GumTree (optional, for AST facts)
 
 `gumtree_facts.py` shells out to a `gumtree` binary (https://github.com/GumTreeDiff/gumtree).
 If GumTree isn't installed, the runner falls back to `structural_facts.py`
