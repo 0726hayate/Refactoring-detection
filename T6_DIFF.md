@@ -29,7 +29,7 @@ truth — used only for scoring, never shown to the LLM), and
 
 ### Step 2. Build the structural facts BEFORE any LLM call
 
-Two fact extractors run offline-style (no LLM) and produce XML blocks that
+Two fact extractors,  produce XML blocks that
 will later be pasted into prompts:
 
 - `gumtree_facts_for_case` in `langchain_pipeline/gumtree_facts.py` — shells
@@ -44,7 +44,7 @@ If GumTree can't parse the commit (some files are broken Python), the
 pipeline falls back to `facts_for_case` in
 `langchain_pipeline/structural_facts.py` (pure-Python `ast`).
 
-These two blocks are glued together into a single `structural_facts_xml`
+These two blocks are a single `structural_facts_xml`
 string that Stages 2/3 and the Stage 5 / adversarial verifier will all see.
 
 ### Step 3. Stage 1 — routing (LLM call 1)
@@ -60,7 +60,7 @@ later.
 
 ### Step 4. Stage 2 — emit refactoring types the LLM sees (LLM call 2)
 
-The big prompt. The LLM reads: the diff + the `<gumtree_facts>` +
+The LLM reads: the diff + the `<gumtree_facts>` +
 the `<intra_method_signals>` + the canonical 39-type list with definitions.
 It returns two lists:
 - `defined` — types it recognises from the 39 canonical ones
@@ -157,7 +157,7 @@ Each written JSON line has:
 
 ## Where the data lives
 
-### What's bundled in this directory
+### In this directory
 
 | What | Path | Used for |
 |---|---|---|
@@ -165,7 +165,7 @@ Each written JSON line has:
 | 5-case smoke slice | `splits/2p5d_smoke_5.json` | quick verification (`run_T6.sh smoke`) |
 | Canonical 39-type whitelist | `splits/valid_types_39.json` | scorer + `--canon-only` |
 
-### What's NOT bundled (too big — hosted on HuggingFace)
+### What's NOT (too big — hosted on HuggingFace)
 
 Dataset: **https://huggingface.co/datasets/0726hayate/t6-refactoring-detection-data**
 
