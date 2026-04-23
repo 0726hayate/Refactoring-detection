@@ -14,6 +14,54 @@ the intra-method patterns (from the regex extractor) in its prompt, so it
 can keep a detection if the facts support it — not just if the diff line
 happens to match.
 
+## Main files and functions for T6 (quick reference)
+
+The model T6 uses is **`qwen3.5:35b`** (Q4_K_M quantization on Ollama,
+context 65536 in T6's run script). Set in `run_T6.sh` via
+`--model qwen3.5:35b`. The model registry is `MODEL_CONFIGS` in
+`langchain_pipeline/pipeline.py`.
+
+### Top-level files
+
+| File | What it is |
+|---|---|
+| `run_T6.sh` | Entry script — sets all the T6 env vars and calls `concurrent_runner` |
+| `requirements.txt` | Python dependencies (LangChain, ollama client, numpy, etc.) |
+| `splits/2p5d_5pertype_195.json` | Input commits (194 cases, 5 per canonical type) |
+| `splits/2p5d_smoke_5.json` | Tiny 5-case slice for smoke testing |
+| `splits/valid_types_39.json` | Canonical 39-type whitelist |
+
+### Core code (in `langchain_pipeline/`)
+
+| File | Most important pieces |
+|---|---|
+| `concurrent_runner.py` | `main()` — entry point; spawns workers and writes `cases.jsonl` |
+| `pipeline.py` | `RefactoringPipeline.predict()` — runs all stages on one commit. **`_stage_adversarial()` is the T6 logic** (per-detection LLM verification with structural facts, env var `LANGCHAIN_ADVERSARIAL_WITH_FACTS=1`). Also: `_stage5_evidence_review()` (alternative single-batch verifier). |
+| `prompts.py` | `build_stage1_messages`, `build_stage2_messages`, `build_stage3_messages`, `build_stage4_messages` — prompt templates per stage. `TYPE_DEFINITIONS` — one-line definitions of the 39 types used inside the adversarial prompt. |
+| `constants.py` | `ALL_KNOWN_TYPES`, `LEVEL_TYPES` (scope→types map), `MISSING_HINTS_MINED_V4` (FP-Growth association rules), `build_missing_candidates()` (Stage-3 candidate selector) |
+| `precision_filters.py` | `historical_precision()`, `max_rule_strength()`, `filter_stage3_candidates()`, `filter_sole_stage3_additions()` — all the precision-mode filters |
+| `gumtree_facts.py` | `gumtree_facts_for_case()` — produces the `<gumtree_facts>` XML block from a GumTree AST diff |
+| `intra_method_signals.py` | `intra_method_signals_for_case()` — produces the `<intra_method_signals>` XML block from regex/difflib analysis of the diff |
+| `structural_facts.py` | `facts_for_case()` — pure-Python `ast` fallback when GumTree fails |
+| `retrieval.py` | `JavaExampleRetriever.retrieve_examples()` — Stage-3 Java exemplar retrieval (mean-pool anchor over 366k embeddings) |
+| `data_manager.py` | `DataManager.load_from_benchmark_file()` — loads the slice JSON into per-case dicts |
+| `evaluation.py` | `compute_multilabel_metrics()` — TP/FP/FN scoring per case; `compute_per_type_metrics()` — per-type breakdown |
+| `schemas.py` | Pydantic models that constrain each stage's LLM output: `LevelClassification`, `DetectedRefactorings`, `AdditionalDetections`, `VerifiedRefactoringsWithConfidence` |
+| `tools.py` | LangChain tool definitions (`get_definition_tool`, `retrieve_java_examples_tool`, etc.) the LLM can call inside each stage |
+
+### The T6 env-var bundle
+
+These env vars are what `run_T6.sh` sets — they activate T6's behaviour:
+
+| Env var | Value | Effect |
+|---|---|---|
+| `LANGCHAIN_PRECISION_MODE` | `1` | Turns on the 5 precision-mode filters + thinking-OFF |
+| `LANGCHAIN_FACTS_SRC` | `gumtree+intra` | Use both fact sources together |
+| `LANGCHAIN_HARD_BLOCK_P` | `0.20` | Auto-drop types with historical precision below 0.20 |
+| `LANGCHAIN_ADVERSARIAL` | `1` | Turn on per-detection LLM verifier |
+| `LANGCHAIN_ADVERSARIAL_THRESHOLD` | `90` | Only verify detections with Stage-4 confidence below 90 |
+| **`LANGCHAIN_ADVERSARIAL_WITH_FACTS`** | **`1`** | **The T6-specific flag — inject the structural+intra facts into the adversarial prompt** |
+
 ## Walkthrough — one commit, start to finish
 
 ### Step 1. Load the commit
