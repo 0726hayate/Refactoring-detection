@@ -1,0 +1,11 @@
+# Minimum Python deps for T6 reproduction
+# (LangChain stack pinned to versions tested with qwen3.5:35b on Ollama 0.6+)
+langchain-core>=0.3.0
+langchain-ollama>=0.2.0
+langchain>=0.3.0
+numpy>=1.24
+# Optional but recommended (for parser-based fact extraction):
+libcst>=1.1
+parso>=0.8
+tree-sitter>=0.21
+tree-sitter-python>=0.21

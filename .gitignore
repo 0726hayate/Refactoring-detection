@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual envs
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Outputs from running T6
+results/
+logs/
+
+# The big data files (downloaded from HuggingFace, not version-controlled)
+java_retrieval/
+data/
+*.npy
+*.pkl
+commit_level_*.json
+
+# Override: keep the small slice JSONs we DO want to ship
+!splits/2p5d_5pertype_195.json
+!splits/2p5d_smoke_5.json
+!splits/valid_types_39.json
+
+# OS junk
+Thumbs.db
+ehthumbs.db
+.fact_failures.jsonl

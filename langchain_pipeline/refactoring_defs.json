@@ -1,0 +1,370 @@
+[
+  {
+    "refactoring_type": "Extract Method",
+    "definition": "Create a new method by extracting a block of code from an existing method to improve readability or reuse."
+  },
+  {
+    "refactoring_type": "Inline Method",
+    "definition": "Replace a method call with the method's body when the method’s body is simple or no longer needed."
+  },
+  {
+    "refactoring_type": "Rename Method",
+    "definition": "Change the name of a method to better reflect its purpose or improve clarity."
+  },
+  {
+    "refactoring_type": "Move Method",
+    "definition": "Relocate a method from one class to another where it fits better conceptually or logically."
+  },
+  {
+    "refactoring_type": "Move Attribute",
+    "definition": "Transfer an attribute from one class to another that uses it more appropriately."
+  },
+  {
+    "refactoring_type": "Pull Up Method",
+    "definition": "Move a method from subclasses into their superclass to remove duplication."
+  },
+  {
+    "refactoring_type": "Pull Up Attribute",
+    "definition": "Move a attribute from subclasses into their superclass to centralize shared state."
+  },
+  {
+    "refactoring_type": "Push Down Method",
+    "definition": "Move a method from a superclass to subclasses where it is more relevant."
+  },
+  {
+    "refactoring_type": "Push Down Attribute",
+    "definition": "Move an attribute from a superclass to subclasses where it is actually used."
+  },
+  {
+    "refactoring_type": "Extract Superclass",
+    "definition": "Create a new superclass from common behavior shared among multiple classes."
+  },
+  {
+    "refactoring_type": "Extract Interface",
+    "definition": "Define a new interface from existing methods in one or more classes to improve abstraction."
+  },
+  {
+    "refactoring_type": "Move Class",
+    "definition": "Move a class to another package or module that better fits its responsibilities."
+  },
+  {
+    "refactoring_type": "Rename Class",
+    "definition": "Change the name of a class to better describe its role or behavior."
+  },
+  {
+    "refactoring_type": "Extract And Move Method",
+    "definition": "Extract part of a method into a new one and move that new method to another class."
+  },
+  {
+    "refactoring_type": "Rename Package",
+    "definition": "Change the name of a package to reflect a new structure or naming convention."
+  },
+  {
+    "refactoring_type": "Move And Rename Class",
+    "definition": "Move a class to a different package and change its name simultaneously."
+  },
+  {
+    "refactoring_type": "Extract Class",
+    "definition": "Create a new class by moving related fields and methods from an existing class to simplify responsibilities."
+  },
+  {
+    "refactoring_type": "Extract Subclass",
+    "definition": "Create a new subclass from an existing class by moving specific features or behaviors into it."
+  },
+  {
+    "refactoring_type": "Extract Variable",
+    "definition": "Introduce a new variable to hold the result of an expression for readability or reuse."
+  },
+  {
+    "refactoring_type": "Inline Variable",
+    "definition": "Replace a variable with its assigned expression when the variable adds no clarity."
+  },
+  {
+    "refactoring_type": "Parameterize Variable",
+    "definition": "Turn a constant or hard-coded value into a parameter to make code more flexible."
+  },
+  {
+    "refactoring_type": "Extract Attribute",
+    "definition": "Create a new attribute from part of an object or data structure for clarity or reuse."
+  },
+  {
+    "refactoring_type": "Move and Rename Method",
+    "definition": "Move a method to another class and change its name for consistency or clarity."
+  },
+  {
+    "refactoring_type": "Move and Inline Method",
+    "definition": "Move a method to another class and then inline it at its call sites."
+  },
+  {
+    "refactoring_type": "Encapsulate Attribute",
+    "definition": "Make an attribute private and provide getter and setter methods for controlled access."
+  },
+  {
+    "refactoring_type": "Parameterize Attribute",
+    "definition": "Replace a fixed attribute with one that can be set through parameters."
+  },
+  {
+    "refactoring_type": "Move Package",
+    "definition": "Relocate a package within the project structure for better organization."
+  },
+  {
+    "refactoring_type": "Split Package",
+    "definition": "Divide a large package into smaller, more cohesive ones."
+  },
+  {
+    "refactoring_type": "Merge Package",
+    "definition": "Combine related packages into one to simplify structure."
+  },
+  {
+    "refactoring_type": "Localize Parameter",
+    "definition": "Move a parameter so it is declared closer to where it is used."
+  },
+  {
+    "refactoring_type": "Collapse Hierarchy",
+    "definition": "Remove a redundant class hierarchy by merging subclass and superclass."
+  },
+  {
+    "refactoring_type": "Merge Class",
+    "definition": "Combine two or more classes into a single class that consolidates their behavior."
+  },
+  {
+    "refactoring_type": "Inline Attribute",
+    "definition": "Replace an attribute with its value or the expression it stores."
+  },
+  {
+    "refactoring_type": "Split Class",
+    "definition": "Divide a large class into smaller, more focused classes."
+  },
+  {
+    "refactoring_type": "Split Conditional",
+    "definition": "Break down complex conditional logic into separate, simpler conditions or methods."
+  },
+  {
+    "refactoring_type": "Invert Condition",
+    "definition": "Reverse a conditional expression and adjust its branches for clarity."
+  },
+  {
+    "refactoring_type": "Merge Conditional",
+    "definition": "Combine multiple conditional branches that result in the same action."
+  },
+  {
+    "refactoring_type": "Merge Method",
+    "definition": "Combine two or more similar methods into a single unified one."
+  },
+  {
+    "refactoring_type": "Split Method",
+    "definition": "Divide a long or complex method into smaller, more focused methods."
+  },
+  {
+    "refactoring_type": "Move Code",
+    "definition": "Relocate a block of code from one method to another to improve cohesion or reuse."
+  },
+  {
+    "refactoring_type": "Rename Variable",
+    "definition": "Change a variable's name to make its purpose clearer."
+  },
+  {
+    "refactoring_type": "Rename Parameter",
+    "definition": "Change a parameter’s name for clarity or consistency."
+  },
+  {
+    "refactoring_type": "Rename Attribute",
+    "definition": "Change the name of a class attribute for clarity or convention."
+  },
+  {
+    "refactoring_type": "Move And Rename Attribute",
+    "definition": "Move an attribute to another class and rename it simultaneously."
+  },
+  {
+    "refactoring_type": "Replace Variable With Attribute",
+    "definition": "Replace a local variable with a class attribute to make the data persist across methods."
+  },
+  {
+    "refactoring_type": "Replace Attribute (with Attribute)",
+    "definition": "Replace one attribute with another, often during class refactoring or renaming."
+  },
+  {
+    "refactoring_type": "Merge Variable",
+    "definition": "Combine two or more variables with similar roles into one."
+  },
+  {
+    "refactoring_type": "Merge Parameter",
+    "definition": "Combine multiple parameters into a single one representing a unified concept."
+  },
+  {
+    "refactoring_type": "Merge Attribute",
+    "definition": "Combine two or more attributes with similar meaning into one."
+  },
+  {
+    "refactoring_type": "Split Variable",
+    "definition": "Divide a variable that holds multiple unrelated values into separate variables."
+  },
+  {
+    "refactoring_type": "Split Parameter",
+    "definition": "Replace one complex parameter with multiple simpler parameters."
+  },
+  {
+    "refactoring_type": "Split Attribute",
+    "definition": "Replace one complex attribute with multiple more focused attributes."
+  },
+  {
+    "refactoring_type": "Change Variable Type",
+    "definition": "Modify a variable’s data type to better fit its usage or new logic."
+  },
+  {
+    "refactoring_type": "Change Parameter Type",
+    "definition": "Change the type of a parameter to match new requirements or design."
+  },
+  {
+    "refactoring_type": "Change Return Type",
+    "definition": "Update a method’s return type to better reflect its output."
+  },
+  {
+    "refactoring_type": "Change Attribute Type",
+    "definition": "Alter an attribute’s data type for correctness or consistency."
+  },
+  {
+    "refactoring_type": "Add Method Annotation",
+    "definition": "Introduce a new annotation to a method for metadata or behavioral purposes."
+  },
+  {
+    "refactoring_type": "Remove Method Annotation",
+    "definition": "Delete an annotation from a method that is no longer needed."
+  },
+  {
+    "refactoring_type": "Modify Method Annotation",
+    "definition": "Change the parameters or type of a method annotation."
+  },
+  {
+    "refactoring_type": "Add Attribute Annotation",
+    "definition": "Add an annotation to a class attribute."
+  },
+  {
+    "refactoring_type": "Remove Attribute Annotation",
+    "definition": "Remove an annotation from a class attribute."
+  },
+  {
+    "refactoring_type": "Modify Attribute Annotation",
+    "definition": "Change the configuration or parameters of an attribute annotation."
+  },
+  {
+    "refactoring_type": "Add Class Annotation",
+    "definition": "Add an annotation to a class for metadata or framework integration."
+  },
+  {
+    "refactoring_type": "Remove Class Annotation",
+    "definition": "Remove an existing annotation from a class."
+  },
+  {
+    "refactoring_type": "Modify Class Annotation",
+    "definition": "Alter the parameters or type of a class annotation."
+  },
+  {
+    "refactoring_type": "Add Parameter Annotation",
+    "definition": "Attach an annotation to a parameter."
+  },
+  {
+    "refactoring_type": "Remove Parameter Annotation",
+    "definition": "Remove an annotation from a parameter."
+  },
+  {
+    "refactoring_type": "Modify Parameter Annotation",
+    "definition": "Change or update the properties of a parameter annotation."
+  },
+  {
+    "refactoring_type": "Add Variable Annotation",
+    "definition": "Add an annotation to a variable for metadata or analysis."
+  },
+  {
+    "refactoring_type": "Remove Variable Annotation",
+    "definition": "Delete an annotation attached to a variable."
+  },
+  {
+    "refactoring_type": "Modify Variable Annotation",
+    "definition": "Change the annotation or its arguments for a variable."
+  },
+  {
+    "refactoring_type": "Add Parameter",
+    "definition": "Add a new parameter to a method signature."
+  },
+  {
+    "refactoring_type": "Remove Parameter",
+    "definition": "Remove an unused or redundant parameter from a method."
+  },
+  {
+    "refactoring_type": "Reorder Parameter",
+    "definition": "Change the order of parameters in a method signature."
+  },
+  {
+    "refactoring_type": "Add Thrown Exception Type",
+    "definition": "Declare that a method can throw an additional type of exception."
+  },
+  {
+    "refactoring_type": "Remove Thrown Exception Type",
+    "definition": "Remove an exception type from a method’s throws clause."
+  },
+  {
+    "refactoring_type": "Change Thrown Exception Type",
+    "definition": "Replace an exception type in a method’s throws clause with another."
+  },
+  {
+    "refactoring_type": "Change Method Access Modifier",
+    "definition": "Change a method’s access level (e.g., public, private, protected)."
+  },
+  {
+    "refactoring_type": "Change Attribute Access Modifier",
+    "definition": "Modify the visibility (e.g., public/private) of a class attribute."
+  },
+  {
+    "refactoring_type": "Replace Attribute With Variable",
+    "definition": "Replace a persistent class attribute with a temporary local variable."
+  },
+  {
+    "refactoring_type": "Add Method Modifier (final, static, abstract, synchronized)",
+    "definition": "Add a modifier to a method to adjust its behavior or constraints."
+  },
+  {
+    "refactoring_type": "Remove Method Modifier (final, static, abstract, synchronized)",
+    "definition": "Remove a modifier from a method to change its constraints or flexibility."
+  },
+  {
+    "refactoring_type": "Add Attribute Modifier (final, static, transient, volatile)",
+    "definition": "Add a modifier to an attribute to change its storage or visibility behavior."
+  },
+  {
+    "refactoring_type": "Remove Attribute Modifier (final, static, transient, volatile)",
+    "definition": "Remove a modifier from an attribute to alter its behavior."
+  },
+  {
+    "refactoring_type": "Add Variable Modifier (final)",
+    "definition": "Add a modifier to a local variable to make it immutable."
+  },
+  {
+    "refactoring_type": "Add Parameter Modifier (final)",
+    "definition": "Add a modifier to a parameter to prevent reassignment."
+  },
+  {
+    "refactoring_type": "Remove Variable Modifier (final)",
+    "definition": "Remove the final modifier from a variable to allow reassignment."
+  },
+  {
+    "refactoring_type": "Remove Parameter Modifier (final)",
+    "definition": "Remove the final modifier from a parameter to allow reassignment."
+  },
+  {
+    "refactoring_type": "Change Class Access Modifier",
+    "definition": "Change a class’s visibility, such as from public to package-private."
+  },
+  {
+    "refactoring_type": "Add Class Modifier (final, static, abstract)",
+    "definition": "Add a modifier to a class to specify inheritance or usage constraints."
+  },
+  {
+    "refactoring_type": "Remove Class Modifier (final, static, abstract)",
+    "definition": "Remove a modifier from a class to relax inheritance or constraints."
+  },
+  {
+    "refactoring_type": "Change Type Declaration Kind (class, interface, enum, annotation, record)",
+    "definition": "Change the kind of a type declaration to another, such as from class to interface."
+  }
+]
